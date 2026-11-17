@@ -4,7 +4,7 @@
 #
 # PER EVENIMENT schimba: numele serviciului si al bazei de date (sa fie unice in cont).
 databases:
-  - name: checkin-db                 # <- schimba, ex. checkin-db-clientx
+  - name: checkin-db-art
     plan: free                       # free: expira la 30 de zile, fara backup.
                                      # 0.1c-256mb ($6/luna): nu expira, are backup.
     region: frankfurt
@@ -13,7 +13,7 @@ databases:
 
 services:
   - type: web
-    name: webui-checkin              # <- schimba, ex. webui-clientx-oras (devine adresa .onrender.com)
+    name: webui-checkin-art          # adresa: https://webui-checkin-art.onrender.com
     runtime: python
     plan: starter
     region: frankfurt                # aceeasi regiune ca baza de date
@@ -26,7 +26,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: checkin-db           # <- acelasi nume ca la databases
+          name: checkin-db-art
           property: connectionString
       - key: PYTHON_VERSION
         value: "3.12.7"

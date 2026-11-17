@@ -1,4 +1,4 @@
-# Check-in invitați pe tablete — șablon
+# Check-in Art — presă și invitați (174 de persoane)
 
 Șablon pentru aplicațiile de check-in la evenimente (Meno, Metro, Single Malt…). Scrii 3 litere din nume și bifezi **A venit?**, iar bifarea apare pe toate tabletele în ~2 secunde. Bifările stau în **Render Postgres**, deci un deploy în timpul evenimentului **nu mai produce întrerupere**.
 

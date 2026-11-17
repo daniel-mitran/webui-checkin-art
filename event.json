@@ -1,11 +1,11 @@
 {
- "id": "exemplu-2026-11",
- "brand": "Numele Brandului",
- "brandSub": "România",
- "title": "Locația evenimentului",
- "subtitle": "1 decembrie 2026",
- "tag": "Check-in invitați",
+ "id": "art-2026",
+ "brand": "Art",
+ "brandSub": "",
+ "title": "Presă și invitați",
+ "subtitle": "",
+ "tag": "Check-in",
  "timezone": "Europe/Bucharest",
  "googleSheet": "https://docs.google.com/spreadsheets/d/1UEyhzAjPxUPSLoGvXVFAHPcU2XJ8ZC4WN1_c-h0Noh0/edit",
- "sheetName": ""
+ "sheetName": "Art"
 }

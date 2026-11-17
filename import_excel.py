@@ -81,6 +81,26 @@ def xlsx_rows(path, sheet_name=None):
                 val = None
             vals[col_index(c.get("r"))] = val
         rows.append((int(row.get("r")), vals))
+    # celule unite (ex. o firma unita pe 3 randuri): valoarea din coltul stanga-sus
+    # se copiaza in toate celulele zonei, ca fiecare rand sa aiba firma lui
+    merged = root.find("m:mergeCells", NS)
+    if merged is not None:
+        by_row = {r: v for r, v in rows}
+        for mc in merged.findall("m:mergeCell", NS):
+            a, _, b = mc.get("ref", "").partition(":")
+            if not b:
+                continue
+            m1, m2 = re.match(r"([A-Z]+)(\d+)", a.upper()), re.match(r"([A-Z]+)(\d+)", b.upper())
+            c1, r1, c2, r2 = col_index(m1.group(1)), int(m1.group(2)), col_index(m2.group(1)), int(m2.group(2))
+            top = by_row.get(r1, {}).get(c1)
+            if top in (None, ""):
+                continue
+            for r in range(r1, r2 + 1):
+                cells = by_row.setdefault(r, {})
+                for c in range(c1, c2 + 1):
+                    if cells.get(c) in (None, ""):
+                        cells[c] = top
+        rows = sorted(by_row.items())
     return rows
 
 

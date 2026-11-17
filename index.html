@@ -243,6 +243,7 @@
   var POLL_MS = 2000, MIN_CHARS = 3;
   var guests = [], byId = {}, checkins = {}, version = 0, loaded = false, lastOk = 0;
   var query = "", pending = {}, confirmId = null, showAll = false, filt = "all";
+  var allOne = false;   // toti invitatii au cate o persoana -> fara eticheta / coloana de persoane
 
   function $(id){ return document.getElementById(id); }
   function norm(s){
@@ -338,6 +339,7 @@
       var groups = {};
       guests.forEach(function(g){ var k = g.nk.replace(/-/g, " ").split(" ").filter(Boolean).sort().join(" "); g.gk = k; groups[k] = (groups[k] || 0) + 1; });
       guests.forEach(function(g){ g.dup = groups[g.gk] > 1 ? groups[g.gk] : 0; });
+      allOne = guests.every(function(g){ return g.count === 1; });
       guests.sort(function(a,b){ return a.nk < b.nk ? -1 : a.nk > b.nk ? 1 : a.row - b.row; });
       byId = {}; guests.forEach(function(g){ byId[g.id] = g; });
       var ev = s.event || {};
@@ -400,12 +402,13 @@
       if (!res.length){ h.push('<div class="empty">' + (filt === "in" ? "Nu a venit nimeni încă." : "Au venit toți invitații.") + '</div>'); out.innerHTML = h.join(""); return; }
       // tabel compact: nume in stanga, numarul de persoane in dreapta
       var tot = 0;
-      h.push('<table class="tbl"><thead><tr><th>Nume</th><th class="n">Pers.</th></tr></thead><tbody>');
+      var nCol = allOne ? '' : '<th class="n">Pers.</th>';
+      h.push('<table class="tbl"><thead><tr><th>Nume</th>' + nCol + '</tr></thead><tbody>');
       res.forEach(function(g){
         tot += g.count;
-        h.push('<tr' + (checkins[g.id] ? ' class="in"' : '') + '><td>' + esc(g.name) + (g.detail ? '<small>' + esc(g.detail) + '</small>' : '') + '</td><td class="n">' + g.count + '</td></tr>');
+        h.push('<tr' + (checkins[g.id] ? ' class="in"' : '') + '><td>' + esc(g.name) + (g.detail ? '<small>' + esc(g.detail) + '</small>' : '') + '</td>' + (allOne ? '' : '<td class="n">' + g.count + '</td>') + '</tr>');
       });
-      h.push('</tbody><tfoot><tr><td>' + res.length + (res.length === 1 ? ' invitație' : ' invitații') + '</td><td class="n">' + tot + '</td></tr></tfoot></table>');
+      h.push('</tbody><tfoot><tr><td>' + res.length + (res.length === 1 ? ' invitație' : ' invitații') + '</td>' + (allOne ? '' : '<td class="n">' + tot + '</td>') + '</tr></tfoot></table>');
       out.innerHTML = h.join("");
       return;
     } else {
@@ -433,7 +436,7 @@
         step = '<div class="stepper"><span class="t">Au intrat:</span><button type="button" data-act="minus" aria-label="Mai puțini"' + (n <= 1 ? " disabled" : "") + '>−</button><b>' + n + '</b><button type="button" data-act="plus" aria-label="Mai mulți"' + (n >= g.count ? " disabled" : "") + '>+</button><small>din ' + g.count + '</small></div>';
       }
       h.push('<div class="person' + (ci ? " in" : "") + '" data-id="' + esc(g.id) + '"><div class="who">' +
-        '<div class="line1"><div class="name">' + highlight(g.name, tokens) + '</div>' + '<span class="pax' + (g.count > 2 ? " big" : "") + '">' + pers(g.count) + '</span></div>' +
+        '<div class="line1"><div class="name">' + highlight(g.name, tokens) + '</div>' + (allOne ? '' : '<span class="pax' + (g.count > 2 ? " big" : "") + '">' + pers(g.count) + '</span>') + '</div>' +
         (g.detail ? '<div class="detail">' + esc(g.detail) + '</div>' : '') +
         (g.dup ? '<div class="dup">Numele apare de ' + g.dup + ' ori în listă (invitații separate).</div>' : '') +
         step + '</div>' + act + '</div>');
