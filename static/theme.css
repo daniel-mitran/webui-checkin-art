@@ -1,0 +1,57 @@
+/* =====================================================================
+   TEMA EVENIMENTULUI - singurul fisier de stil care se schimba per eveniment.
+   Paleta implicita: inchisa, neutra (carbune + kaki + chihlimbar).
+   Pentru un brand nou: ia culorile de pe site-ul clientului si inlocuieste
+   valorile de mai jos. Exemple de teme gata facute sunt la finalul fisierului.
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root{
+  --font:"Poppins","Helvetica Neue",Arial,sans-serif;
+
+  /* fundaluri */
+  --bg:#262626;          /* pagina */
+  --card:#323232;        /* randurile cu invitati */
+  --card-in:#3a3528;     /* randul unui invitat sosit */
+  --card-in-line:#6b5d36;
+  --head:#1c1c1c;        /* antetul */
+  --head-ink:#ffffff;    /* textul din antet */
+  --head-soft:rgba(255,255,255,.65);
+  --head-accent:#a69a80; /* data, subtitlul si linia de sub antet */
+
+  /* text */
+  --ink:#ffffff;
+  --ink-soft:rgba(255,255,255,.65);
+  --ink-faint:rgba(255,255,255,.4);
+  --line:#474747;
+
+  /* culoarea de brand (chenare, butoane, evidentieri) si textul pus peste ea */
+  --brand:#a69a80;
+  --brand-soft:#4a4436;
+  --brand-line:rgba(166,154,128,.5);
+  --on-brand:#1c1c1c;
+
+  /* accentul pentru "a venit" (bifa, numarul de sositi, notificari) */
+  --accent:#feb406;
+  --accent-glow:rgba(254,180,6,.25);
+
+  --red:#e5484d;
+  color-scheme:dark;
+}
+
+/* ---------------------------------------------------------------------
+   Exemplu de tema deschisa (de copiat peste :root de mai sus):
+
+:root{
+  --font:"Inter","Helvetica Neue",Arial,sans-serif;
+  --bg:#f3f5f8; --card:#ffffff; --card-in:#e6f4ea; --card-in-line:#9ccfab;
+  --head:#0b2a5b; --head-ink:#ffffff; --head-soft:rgba(255,255,255,.7); --head-accent:#7fb2ff;
+  --ink:#10203a; --ink-soft:#5b6878; --ink-faint:#9aa4b2; --line:#dde3ea;
+  --brand:#0b2a5b; --brand-soft:#dfe7f3; --brand-line:rgba(255,255,255,.35); --on-brand:#ffffff;
+  --accent:#1a8f3c; --accent-glow:rgba(26,143,60,.25);
+  --red:#d0102e;
+  color-scheme:light;
+}
+   (+ @import pentru fontul Inter in locul lui Poppins)
+   --------------------------------------------------------------------- */

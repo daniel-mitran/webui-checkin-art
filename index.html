@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1c1c1c" id="themeColor">
+<title>Check-in invitați</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- culorile si fontul evenimentului: static/theme.css (singurul fisier de stil de schimbat) -->
+<link rel="stylesheet" href="static/theme.css">
+<style>
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  /* fara zoom: blocheaza dublu-tap si pinch pe tablete */
+  html{touch-action:pan-y; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  body{touch-action:pan-y;}
+  button,input{touch-action:manipulation;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:16px; -webkit-font-smoothing:antialiased;}
+  [hidden]{display:none!important;}
+
+  .top{background:var(--head); color:var(--head-ink); border-bottom:4px solid var(--head-accent); padding-top:env(safe-area-inset-top,0px);}
+  .top-in{
+    max-width:860px; margin:0 auto; display:flex; align-items:center; gap:22px;
+    padding:22px max(20px, env(safe-area-inset-right,0px)) 22px max(20px, env(safe-area-inset-left,0px));
+  }
+  .top img{display:block; height:56px; width:auto;}
+  .wordmark{display:flex; flex-direction:column; line-height:1; padding-right:22px; border-right:1px solid var(--brand-line); color:var(--head-ink);}
+  .wordmark b{font-size:28px; font-weight:700; letter-spacing:.02em;}
+  .wordmark span{margin-top:6px; font-size:11px; font-weight:600; letter-spacing:.32em; text-transform:uppercase; color:var(--head-accent);}
+  .ev{flex:1; min-width:0;}
+  .ev .kick{font-size:13px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--head-accent);}
+  .ev h1{margin:4px 0 0; font-size:28px; line-height:1.15; font-weight:700; overflow-wrap:anywhere;}
+  .ev .tag{margin-top:4px; font-size:14px; color:var(--head-soft); font-weight:400;}
+
+  .page{
+    min-height:calc(100% - 120px); display:flex; flex-direction:column; gap:20px;
+    max-width:860px; margin:0 auto;
+    padding-block:24px 0;
+    padding-left:max(20px, env(safe-area-inset-left,0px));
+    padding-right:max(20px, env(safe-area-inset-right,0px));
+  }
+  .alert{background:var(--red); color:#fff; border-radius:8px; padding:12px 16px; font-weight:600; font-size:15px;}
+
+  .search{position:relative;}
+  .search input{
+    width:100%; font-family:var(--font); font-size:26px; font-weight:500; color:var(--ink);
+    padding:20px 76px 20px 22px; border-radius:8px; border:2px solid var(--brand);
+    background:var(--card); outline:none; -webkit-appearance:none; appearance:none;
+  }
+  .search input::-webkit-search-cancel-button,.search input::-webkit-search-decoration{-webkit-appearance:none; appearance:none; display:none;}
+  .search input::placeholder{color:var(--ink-faint); font-weight:400;}
+  .search input:focus{border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-glow);}
+  .clear{
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    width:52px; height:52px; border-radius:6px; border:none; cursor:pointer;
+    background:var(--brand); color:var(--on-brand); font-size:30px; font-weight:600; line-height:52px; padding:0;
+  }
+  .clear:active{transform:translateY(-50%) scale(.94);}
+
+  .hint{color:var(--ink-soft); font-size:16px; padding:6px 4px;}
+  .count{font-weight:600; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--brand); padding:0 4px;}
+
+  .results{display:flex; flex-direction:column; gap:10px; margin-top:10px;}
+  .person{
+    display:flex; align-items:center; gap:16px; padding:16px 14px 16px 20px;
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+  }
+  .person.in{background:var(--card-in); border-color:var(--card-in-line); box-shadow:inset 6px 0 0 var(--accent);}
+  .who{flex:1; min-width:0; display:flex; flex-direction:column; gap:7px;}
+  .line1{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+  .name{font-size:23px; font-weight:600; line-height:1.25; overflow-wrap:anywhere;}
+  .name mark{background:var(--brand); color:var(--on-brand); border-radius:3px; padding:0 2px;}
+  .pax{flex:none; font-weight:600; font-size:14px; padding:4px 11px; border-radius:999px; border:1px solid var(--brand); color:var(--brand); white-space:nowrap;}
+  .pax.big{background:var(--accent); border-color:var(--accent); color:var(--on-brand); font-size:16px;}
+  .detail{font-size:15px; color:var(--ink-soft); line-height:1.4; overflow-wrap:anywhere;}
+  .dup{font-size:13px; color:var(--accent); font-weight:500;}
+
+  .stepper{display:flex; align-items:center; gap:10px; margin-top:2px; flex-wrap:wrap;}
+  .stepper .t{font-weight:600; font-size:15px; color:var(--accent);}
+  .stepper button{width:46px; height:46px; border-radius:6px; border:1px solid var(--brand); background:transparent; color:var(--ink); font:inherit; font-size:24px; font-weight:600; line-height:1; cursor:pointer; padding:0;}
+  .stepper button:disabled{opacity:.3;}
+  .stepper b{font-size:24px; font-weight:700; min-width:28px; text-align:center; font-variant-numeric:tabular-nums;}
+  .stepper small{font-size:15px; color:var(--ink-soft);}
+
+  .check{flex:none; display:flex; align-items:center; gap:12px; cursor:pointer; border:none; background:transparent; padding:6px; border-radius:8px; font:inherit; color:inherit;}
+  .check:focus-visible{outline:2px solid var(--accent);}
+  .box{width:58px; height:58px; border-radius:6px; border:2px solid var(--brand); background:transparent; display:flex; align-items:center; justify-content:center; color:var(--on-brand); font-size:32px; font-weight:700;}
+  .check .lbl{font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--brand); text-align:left; line-height:1.35; min-width:76px;}
+  .person.in .box{background:var(--accent); border-color:var(--accent);}
+  .person.in .lbl{color:var(--accent);}
+  .lbl small{display:block; letter-spacing:0; text-transform:none; font-weight:400; font-size:13px; color:var(--ink-soft);}
+  .check:active .box{transform:scale(.95);}
+
+  .confirm{display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+  .confirm span{font-weight:600;}
+  .btn{font:inherit; font-weight:600; font-size:15px; border-radius:6px; padding:12px 16px; cursor:pointer; border:1px solid var(--brand); background:transparent; color:var(--ink);}
+  .btn.red{background:var(--red); border-color:var(--red); color:#fff;}
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .empty{padding:28px 6px; color:var(--ink-soft); font-size:17px;}
+
+  footer{margin-top:auto; position:sticky; bottom:0; z-index:5; background:var(--bg); padding-top:16px; padding-bottom:calc(14px + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .live{font-size:15px; color:var(--ink-soft);}
+  .live b{color:var(--accent); font-weight:700; font-size:22px; font-variant-numeric:tabular-nums;}
+  .stats-btn{font-family:var(--font); font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; padding:14px 22px; border-radius:6px; cursor:pointer; border:none; background:var(--brand); color:var(--on-brand); display:flex; align-items:center; gap:10px;}
+  .foot-btns{display:flex; gap:10px; flex-wrap:wrap;}
+  .list-btn{font-family:var(--font); font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; padding:13px 20px; border-radius:6px; cursor:pointer; border:1px solid var(--brand); background:transparent; color:var(--ink);}
+  .list-btn[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--on-brand);}
+  .list-btn:focus-visible,.stats-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .list-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+  .filters{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{font:inherit; font-size:14px; font-weight:600; padding:9px 14px; border-radius:999px; cursor:pointer; border:1px solid var(--line); background:var(--card); color:var(--ink-soft);}
+  .chip.on{border-color:var(--brand); background:var(--brand); color:var(--on-brand);}
+  .chip b{font-variant-numeric:tabular-nums;}
+  .tbl{width:100%; margin-top:10px; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; font-size:18px;}
+  .tbl th{text-align:left; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); padding:10px 16px; border-bottom:1px solid var(--brand);}
+  .tbl td{padding:9px 16px; border-top:1px solid var(--line); font-weight:500; line-height:1.3; overflow-wrap:anywhere;}
+  .tbl tbody tr:first-child td{border-top:none;}
+  .tbl td small{display:block; font-size:13px; font-weight:400; color:var(--ink-soft);}
+  .tbl .n{width:72px; text-align:right; font-weight:700; font-variant-numeric:tabular-nums;}
+  .tbl tr.in td{color:var(--accent);}
+  .tbl tr.in td:first-child{box-shadow:inset 4px 0 0 var(--accent);}
+  .tbl tfoot td{border-top:1px solid var(--brand); font-size:14px; font-weight:600; color:var(--brand);}
+  .dot{width:10px; height:10px; border-radius:50%; background:var(--on-brand);}
+  .dot.bad{background:var(--red);}
+
+  .sheet-bg{position:fixed; inset:0; z-index:20; background:rgba(0,0,0,.6); display:flex; align-items:flex-end; justify-content:center;}
+  .sheet{
+    width:100%; max-width:620px; background:var(--card); border-radius:12px 12px 0 0;
+    padding-block:24px calc(24px + env(safe-area-inset-bottom,0px));
+    padding-left:max(24px, env(safe-area-inset-left,0px)); padding-right:max(24px, env(safe-area-inset-right,0px));
+    display:flex; flex-direction:column; gap:18px; max-height:92%; overflow:auto; border-top:4px solid var(--brand);
+  }
+  .sheet h2{margin:0; font-size:22px; font-weight:700;}
+  .sheet-head{display:flex; justify-content:space-between; align-items:center; gap:12px;}
+  .stat{display:grid; grid-template-columns:1fr auto; gap:6px 12px; align-items:baseline;}
+  .stat .k{font-weight:600; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--brand);}
+  .stat .v{font-size:32px; font-weight:700; font-variant-numeric:tabular-nums;}
+  .stat .v small{font-size:17px; color:var(--ink-soft); font-weight:400;}
+  .bar{grid-column:1 / -1; height:8px; border-radius:4px; background:var(--line); overflow:hidden;}
+  .bar i{display:block; height:100%; width:0; border-radius:4px; background:var(--accent); transition:width .35s ease;}
+  .stat.inv .bar i{background:var(--brand);}
+  .btn.export{display:block; text-align:center; text-decoration:none; background:var(--brand); border-color:var(--brand); color:var(--on-brand);}
+  .meta{font-size:14px; color:var(--ink-soft); line-height:1.5;}
+  .admin{display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding-top:14px; border-top:1px solid var(--line);}
+  .admin input{font:inherit; font-size:16px; padding:11px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); width:130px;}
+
+  .toast{
+    position:fixed; left:50%; z-index:30; top:calc(18px + env(safe-area-inset-top,0px));
+    transform:translate(-50%,-16px); opacity:0; pointer-events:none; max-width:calc(100% - 40px);
+    background:var(--accent); color:var(--on-brand); padding:13px 20px; border-radius:8px; font-weight:600; text-align:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.4); transition:opacity .2s ease, transform .2s ease;
+  }
+  .toast.show{opacity:1; transform:translate(-50%,0);}
+
+  @media (max-width:600px){
+    .ev h1{font-size:21px;} .top img{height:40px;} .top-in{gap:14px;}
+    .wordmark{padding-right:14px;} .wordmark b{font-size:20px;} .wordmark span{font-size:9px;}
+    .search input{font-size:21px; padding:16px 66px 16px 16px;}
+    .clear{width:44px; height:44px; line-height:44px; font-size:26px;}
+    .name{font-size:19px;}
+    .box{width:50px; height:50px; font-size:28px;}
+    .check .lbl{min-width:0; font-size:12px;}
+    .person{padding:12px; gap:10px;}
+  }
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important;} }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <!-- logo: static/logo.png; daca lipseste, apare textul brandului din event.json -->
+    <img src="static/logo.png" alt="" id="logo" onerror="this.hidden=true; document.getElementById('wm').hidden=false">
+    <div class="wordmark" id="wm" hidden><b id="wmMain"></b><span id="wmSub"></span></div>
+    <div class="ev">
+      <div class="kick" id="kick"></div>
+      <h1 id="evTitle">Check-in invitați</h1>
+      <div class="tag" id="evTag"></div>
+    </div>
+  </div>
+</header>
+<div class="page">
+  <div class="alert" id="offline" hidden>Tableta nu se poate conecta la server. Bifările nu se salvează până revine conexiunea.</div>
+
+  <div class="search">
+    <input id="q" type="search" enterkeyhint="search" placeholder="Caută invitatul…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Caută invitatul">
+    <button class="clear" id="clear" type="button" aria-label="Șterge căutarea" hidden>×</button>
+  </div>
+
+  <div id="out"><div class="hint">Se încarcă lista de invitați…</div></div>
+
+  <footer>
+    <div class="live" id="live"></div>
+    <div class="foot-btns">
+      <button class="list-btn" id="listBtn" type="button" aria-pressed="false">Lista completă</button>
+      <button class="stats-btn" id="statsBtn" type="button"><span class="dot" id="dot"></span>Statistici</button>
+    </div>
+  </footer>
+</div>
+
+<div class="sheet-bg" id="statsBg" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="statsTitle">
+    <div class="sheet-head">
+      <h2 id="statsTitle">Statistici</h2>
+      <button class="btn" id="statsClose" type="button">Închide</button>
+    </div>
+    <div class="stat"><div class="k">Persoane sosite</div><div class="v" id="vP">–</div><div class="bar"><i id="bP"></i></div></div>
+    <div class="stat inv"><div class="k">Invitații bifate</div><div class="v" id="vI">–</div><div class="bar"><i id="bI"></i></div></div>
+    <div class="meta">Tabletele se sincronizează la 2 secunde. Lista de invitați este fixă (din Excel).</div>
+    <div class="meta" id="queueInfo" hidden></div>
+    <div class="meta" id="sheetInfo" hidden></div>
+    <a class="btn export" href="/api/export.csv" download>Descarcă situația (Excel / CSV)</a>
+    <div class="admin">
+      <input id="resetInput" type="text" placeholder="scrie RESET" autocomplete="off" autocapitalize="characters" aria-label="Confirmare resetare">
+      <button class="btn red" id="resetBtn" type="button">Șterge toate bifările</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// Zoom dezactivat: iOS Safari ignora user-scalable=no, deci blocam si gesturile
+(function(){
+  function stop(e){ e.preventDefault(); }
+  ["gesturestart","gesturechange","gestureend"].forEach(function(t){ document.addEventListener(t, stop, {passive:false}); });
+  document.addEventListener("touchmove", function(e){ if (e.touches.length > 1 || (e.scale && e.scale !== 1)) e.preventDefault(); }, {passive:false});
+  var lastTouch = 0;
+  document.addEventListener("touchend", function(e){
+    var now = Date.now();
+    if (now - lastTouch < 350 && !(e.target.closest && e.target.closest("input,button"))) e.preventDefault();
+    lastTouch = now;
+  }, {passive:false});
+  document.addEventListener("dblclick", stop, {passive:false});
+  document.addEventListener("wheel", function(e){ if (e.ctrlKey) e.preventDefault(); }, {passive:false});
+  document.addEventListener("keydown", function(e){ if ((e.ctrlKey || e.metaKey) && /^[=+\-0]$/.test(e.key)) e.preventDefault(); });
+})();
+</script>
+<script>
+(function(){
+  "use strict";
+  var POLL_MS = 2000, MIN_CHARS = 3;
+  var guests = [], byId = {}, checkins = {}, version = 0, loaded = false, lastOk = 0;
+  var query = "", pending = {}, confirmId = null, showAll = false, filt = "all";
+
+  function $(id){ return document.getElementById(id); }
+  function norm(s){
+    s = String(s || "");
+    if (s.normalize) s = s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+    return s.replace(/\s+/g," ").trim().toLowerCase();
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  function hhmm(ts){ var d = new Date(ts); return ("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2); }
+  function properCase(s){
+    if (s !== s.toLowerCase() && s !== s.toUpperCase()) return s;
+    return s.toLowerCase().replace(/(^|[\s\-])(\S)/g, function(m,a,b){ return a + b.toUpperCase(); });
+  }
+  function pers(n){ return n === 1 ? "1 persoană" : n + " persoane"; }
+  var toastT;
+  function toast(msg){
+    var t = $("toast"); t.textContent = msg; t.className = "toast show";
+    clearTimeout(toastT); toastT = setTimeout(function(){ t.className = "toast"; }, 2400);
+  }
+
+  function req(method, path, body){
+    if (window.CHECKIN_MOCK) return window.CHECKIN_MOCK(method, path, body);
+    return new Promise(function(resolve, reject){
+      var x = new XMLHttpRequest();
+      x.open(method, path, true);
+      x.timeout = 8000;
+      x.setRequestHeader("Content-Type", "application/json");
+      x.onload = function(){
+        if (x.status >= 200 && x.status < 300){ try { resolve(JSON.parse(x.responseText)); } catch(e){ reject(e); } }
+        else { var er = new Error("HTTP " + x.status); er.status = x.status; reject(er); }
+      };
+      x.onerror = function(){ reject(new Error("retea")); };
+      x.ontimeout = function(){ reject(new Error("timeout")); };
+      x.send(body ? JSON.stringify(body) : null);
+    });
+  }
+
+  // ---- coada: bifarile care n-au ajuns la server raman pe tableta si se retrimit automat
+  var QKEY = "checkin-queue", queue = [];
+  try { queue = JSON.parse(localStorage.getItem(QKEY) || "[]") || []; } catch(e){ queue = []; }
+  function saveQueue(){
+    try { localStorage.setItem(QKEY, JSON.stringify(queue)); } catch(e){}
+    var qi = $("queueInfo");
+    if (qi){ qi.hidden = !queue.length; qi.textContent = queue.length ? queue.length + " modificări așteaptă conexiunea și se trimit automat." : ""; }
+  }
+  function enqueue(op){
+    // o singura operatie in asteptare pe invitat: ultima castiga
+    queue = queue.filter(function(o){ return o.id !== op.id; });
+    queue.push(op); saveQueue();
+  }
+  function overlay(base){
+    if (!queue.length) return base;
+    var c = {}; for (var k in base) c[k] = base[k];
+    queue.forEach(function(o){ if (o.val) c[o.id] = o.val; else delete c[o.id]; });
+    return c;
+  }
+  var flushing = false;
+  function flush(){
+    if (flushing || !queue.length) return Promise.resolve();
+    flushing = true;
+    var op = queue[0];
+    return req("POST", op.path, op.body).then(function(){
+      queue = queue.filter(function(o){ return o !== op; }); saveQueue();
+      flushing = false; version = -1;
+      return flush();
+    }, function(e){
+      flushing = false;
+      if (e && e.status === 400){ queue = queue.filter(function(o){ return o !== op; }); saveQueue(); }
+      throw e;
+    });
+  }
+
+  function sheetInfo(st){
+    var el = $("sheetInfo");
+    if (!st || !st.enabled){ el.hidden = true; return; }
+    el.hidden = false;
+    var nm = st.sheet ? " „" + st.sheet + "”" : "";
+    if (st.ok === null) el.textContent = "Google Sheet" + nm + ": prima sincronizare în curs…";
+    else if (st.ok) el.textContent = "Google Sheet" + nm + ": sincronizat la " + hhmm(st.at) + " (la fiecare 2 minute).";
+    else el.textContent = "Google Sheet: ultima încercare (" + hhmm(st.at) + ") a eșuat: " + (st.error || "eroare") + ". Se reîncearcă automat.";
+  }
+
+  function apply(s){
+    lastOk = Date.now();
+    $("offline").hidden = true; $("dot").className = "dot";
+    sheetInfo(s.sheetSync);
+    if (s.guests){
+      guests = s.guests.map(function(g){
+        var name = properCase(g.name);
+        return {id:g.id, row:g.row, name:name, detail:g.detail || "", count:g.count || 1,
+                nk:norm(name), key:norm(name + " " + (g.detail || ""))};
+      });
+      var groups = {};
+      guests.forEach(function(g){ var k = g.nk.replace(/-/g, " ").split(" ").filter(Boolean).sort().join(" "); g.gk = k; groups[k] = (groups[k] || 0) + 1; });
+      guests.forEach(function(g){ g.dup = groups[g.gk] > 1 ? groups[g.gk] : 0; });
+      guests.sort(function(a,b){ return a.nk < b.nk ? -1 : a.nk > b.nk ? 1 : a.row - b.row; });
+      byId = {}; guests.forEach(function(g){ byId[g.id] = g; });
+      var ev = s.event || {};
+      $("evTitle").textContent = ev.title || "Check-in invitați";
+      $("kick").textContent = ev.subtitle || "";
+      $("evTag").textContent = ev.tag || "Check-in invitați";
+      $("wmMain").textContent = ev.brand || "";
+      $("wmSub").textContent = ev.brandSub || "";
+      $("logo").alt = ev.brand || "";
+      document.title = (ev.brand ? ev.brand + " · " : "") + "Check-in" + (ev.title ? " · " + ev.title : "");
+      loaded = true;
+    }
+    if (s.guests || s.version !== version || queue.length){
+      version = s.version;
+      checkins = overlay(s.checkins || {});
+      render();
+    }
+    stats();
+  }
+
+  function poll(){
+    flush().catch(function(){})
+      .then(function(){ return req("GET", "/api/state" + (loaded ? "" : "?full=1")); })
+      .then(apply)
+      .then(function(){ setTimeout(poll, POLL_MS); }, function(){
+        if (Date.now() - lastOk > 6000){ $("offline").hidden = false; $("dot").className = "dot bad"; }
+        setTimeout(poll, POLL_MS);
+      });
+  }
+
+  function highlight(name, tokens){
+    var n = norm(name);
+    if (!tokens.length || n.length !== name.length) return esc(name);
+    var m = []; for (var i = 0; i < name.length; i++) m.push(false);
+    tokens.forEach(function(t){ var f = 0, k; while ((k = n.indexOf(t, f)) >= 0){ for (var j = k; j < k + t.length; j++) m[j] = true; f = k + 1; } });
+    var out = "", open = false;
+    for (var c = 0; c < name.length; c++){
+      if (m[c] && !open){ out += "<mark>"; open = true; }
+      if (!m[c] && open){ out += "</mark>"; open = false; }
+      out += esc(name[c]);
+    }
+    return out + (open ? "</mark>" : "");
+  }
+
+  function render(){
+    var out = $("out");
+    var tokens = norm(query).split(" ").filter(Boolean);
+    var res, h, full = tokens.join("").length < MIN_CHARS;
+    if (full && (!showAll || !loaded)){
+      out.innerHTML = '<div class="hint">' + (loaded ? "Scrie cel puțin 3 litere din nume sau prenume." : "Se încarcă lista de invitați…") + "</div>";
+      return;
+    }
+    if (full){
+      // lista completa, alfabetic, cu filtru Toti / Au venit / N-au venit
+      var nIn = guests.filter(function(g){ return checkins[g.id]; }).length;
+      res = guests.filter(function(g){ return filt === "all" || (filt === "in") === !!checkins[g.id]; });
+      var chip = function(k, label, n){ return '<button type="button" class="chip' + (filt === k ? " on" : "") + '" data-filt="' + k + '">' + label + ' <b>' + n + '</b></button>'; };
+      h = ['<div class="list-head"><div class="count">Lista completă</div><div class="filters">' +
+        chip("all", "Toți", guests.length) + chip("in", "Au venit", nIn) + chip("out", "N-au venit", guests.length - nIn) + '</div></div>'];
+      if (!res.length){ h.push('<div class="empty">' + (filt === "in" ? "Nu a venit nimeni încă." : "Au venit toți invitații.") + '</div>'); out.innerHTML = h.join(""); return; }
+      // tabel compact: nume in stanga, numarul de persoane in dreapta
+      var tot = 0;
+      h.push('<table class="tbl"><thead><tr><th>Nume</th><th class="n">Pers.</th></tr></thead><tbody>');
+      res.forEach(function(g){
+        tot += g.count;
+        h.push('<tr' + (checkins[g.id] ? ' class="in"' : '') + '><td>' + esc(g.name) + (g.detail ? '<small>' + esc(g.detail) + '</small>' : '') + '</td><td class="n">' + g.count + '</td></tr>');
+      });
+      h.push('</tbody><tfoot><tr><td>' + res.length + (res.length === 1 ? ' invitație' : ' invitații') + '</td><td class="n">' + tot + '</td></tr></tfoot></table>');
+      out.innerHTML = h.join("");
+      return;
+    } else {
+      res = guests.filter(function(g){
+        for (var i = 0; i < tokens.length; i++) if (g.key.indexOf(tokens[i]) < 0) return false;
+        return true;
+      });
+      if (!res.length){
+        out.innerHTML = '<div class="empty">Nu am găsit pe nimeni pentru „' + esc(query.trim()) + '”. Verifică ortografia sau caută după celălalt nume.</div>';
+        return;
+      }
+      h = ['<div class="count">' + res.length + (res.length === 1 ? " rezultat" : " rezultate") + '</div><div class="results">'];
+    }
+    res.forEach(function(g){
+      var ci = checkins[g.id], act, step = "";
+      if (ci && confirmId === g.id){
+        act = '<div class="confirm"><span>Debifezi?</span><button class="btn red" data-act="undo" type="button">Da, debifează</button><button class="btn" data-act="keep" type="button">Nu</button></div>';
+      } else if (ci){
+        act = '<button class="check" data-act="ask" type="button" aria-label="Debifează ' + esc(g.name) + '"><span class="box">✓</span><span class="lbl">A venit<small>la ' + hhmm(ci.ts) + '</small></span></button>';
+      } else {
+        act = '<button class="check" data-act="in" type="button" aria-label="Bifează ' + esc(g.name) + ' ca venit"><span class="box"></span><span class="lbl">A venit?</span></button>';
+      }
+      if (ci && g.count > 1){
+        var n = ci.n || g.count;
+        step = '<div class="stepper"><span class="t">Au intrat:</span><button type="button" data-act="minus" aria-label="Mai puțini"' + (n <= 1 ? " disabled" : "") + '>−</button><b>' + n + '</b><button type="button" data-act="plus" aria-label="Mai mulți"' + (n >= g.count ? " disabled" : "") + '>+</button><small>din ' + g.count + '</small></div>';
+      }
+      h.push('<div class="person' + (ci ? " in" : "") + '" data-id="' + esc(g.id) + '"><div class="who">' +
+        '<div class="line1"><div class="name">' + highlight(g.name, tokens) + '</div>' + '<span class="pax' + (g.count > 2 ? " big" : "") + '">' + pers(g.count) + '</span></div>' +
+        (g.detail ? '<div class="detail">' + esc(g.detail) + '</div>' : '') +
+        (g.dup ? '<div class="dup">Numele apare de ' + g.dup + ' ori în listă (invitații separate).</div>' : '') +
+        step + '</div>' + act + '</div>');
+    });
+    h.push("</div>");
+    out.innerHTML = h.join("");
+  }
+
+  function stats(){
+    var inv = [0, guests.length], ppl = [0, 0];
+    guests.forEach(function(g){ ppl[1] += g.count; var c = checkins[g.id]; if (c){ inv[0]++; ppl[0] += c.n || g.count; } });
+    function pct(a){ return (a[1] ? Math.min(100, a[0] * 100 / a[1]) : 0) + "%"; }
+    $("vP").innerHTML = ppl[0] + " <small>din " + ppl[1] + "</small>"; $("bP").style.width = pct(ppl);
+    $("vI").innerHTML = inv[0] + " <small>din " + inv[1] + "</small>"; $("bI").style.width = pct(inv);
+    $("live").innerHTML = loaded ? "Au venit <b>" + ppl[0] + "</b> din " + ppl[1] + " persoane" : "";
+  }
+
+  function local(id, val){
+    var copy = {}; for (var k in checkins) copy[k] = checkins[k];
+    if (val) copy[id] = val; else delete copy[id];
+    checkins = copy; render(); stats();
+  }
+
+  function send(id, path, body, optimistic, okMsg){
+    if (pending[id]) return;
+    confirmId = null; local(id, optimistic);
+    if (queue.some(function(o){ return o.id === id; })){
+      // exista deja o modificare in asteptare pentru acest invitat: o inlocuim, pleaca la urmatoarea sincronizare
+      enqueue({id:id, path:path, body:body, val:optimistic});
+      if (okMsg) toast(okMsg + " (se trimite când revine conexiunea)");
+      return;
+    }
+    pending[id] = true;
+    req("POST", path, body)
+      .then(function(s){
+        delete pending[id];
+        if (!s.ok && path === "/api/checkin") toast(byId[id].name + " era deja bifat(ă) de pe altă tabletă");
+        else if (okMsg) toast(okMsg);
+        version = -1; apply(s);
+      })
+      .catch(function(e){
+        delete pending[id];
+        if (e && e.status === 400){ toast("Modificarea a fost respinsă de server."); version = -1; return; }
+        // server indisponibil (deploy, retea): pastram bifarea pe tableta si o retrimitem automat
+        enqueue({id:id, path:path, body:body, val:optimistic});
+        toast((okMsg ? okMsg + " · " : "") + "salvat pe tabletă, se trimite automat");
+      });
+  }
+
+  $("out").addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest("button") : null; if (!b) return;
+    if (b.hasAttribute("data-filt")){ filt = b.getAttribute("data-filt"); confirmId = null; render(); return; }
+    var row = b.closest(".person"); if (!row) return;
+    var id = row.getAttribute("data-id"), a = b.getAttribute("data-act"), g = byId[id], c = checkins[id];
+    if (a === "in") send(id, "/api/checkin", {id:id}, {ts:Date.now(), n:g.count}, "✓ " + g.name + (g.count > 1 ? " (" + pers(g.count) + ")" : "") + " a venit");
+    else if (a === "undo") send(id, "/api/undo", {id:id}, null, "Debifat: " + g.name);
+    else if (a === "ask"){ confirmId = id; render(); }
+    else if (a === "keep"){ confirmId = null; render(); }
+    else if ((a === "minus" || a === "plus") && c){
+      var n = Math.max(1, Math.min(g.count, (c.n || g.count) + (a === "plus" ? 1 : -1)));
+      send(id, "/api/count", {id:id, n:n}, {ts:c.ts, n:n});
+    }
+  });
+
+  var q = $("q");
+  q.addEventListener("input", function(){ query = q.value; confirmId = null; $("clear").hidden = !query; render(); });
+  q.addEventListener("keydown", function(e){ if (e.key === "Enter") q.blur(); });
+  $("clear").addEventListener("click", function(){ q.value = ""; query = ""; confirmId = null; $("clear").hidden = true; render(); q.focus(); });
+
+  $("listBtn").addEventListener("click", function(){
+    showAll = !showAll; filt = "all"; confirmId = null;
+    this.setAttribute("aria-pressed", showAll ? "true" : "false");
+    this.textContent = showAll ? "Închide lista" : "Lista completă";
+    if (showAll && query){ q.value = ""; query = ""; $("clear").hidden = true; }
+    q.blur(); render();
+    window.scrollTo(0, 0);
+  });
+
+  function openStats(o){ $("statsBg").hidden = !o; if (o){ stats(); $("statsClose").focus(); } }
+  $("statsBtn").addEventListener("click", function(){ openStats(true); });
+  $("statsClose").addEventListener("click", function(){ openStats(false); });
+  $("statsBg").addEventListener("click", function(e){ if (e.target === this) openStats(false); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") openStats(false); });
+
+  $("resetBtn").addEventListener("click", function(){
+    var inp = $("resetInput");
+    if (inp.value.trim().toUpperCase() !== "RESET"){ toast("Scrie RESET în câmp ca să confirmi"); inp.focus(); return; }
+    req("POST", "/api/reset", {confirm:"RESET"})
+      .then(function(s){ inp.value = ""; version = -1; apply(s); toast("Toate bifările au fost șterse"); })
+      .catch(function(){ toast("Fără conexiune: resetarea nu s-a făcut"); });
+  });
+
+  saveQueue();
+  render();
+  poll();
+})();
+</script>
+</body>
+</html>

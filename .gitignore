@@ -1,0 +1,7 @@
+checkins.json
+*.tmp
+__pycache__/
+*.xlsx
+!exemplu-lista.xlsx
+*.csv
+.venv/

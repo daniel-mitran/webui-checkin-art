@@ -1,0 +1,40 @@
+# Render Blueprint: Dashboard -> New -> Blueprint -> alegi repo-ul evenimentului.
+# Creeaza o baza de date Postgres si serviciul web. Fara disc => deploy fara downtime:
+# Render porneste versiunea noua, asteapta /healthz si abia apoi opreste versiunea veche.
+#
+# PER EVENIMENT schimba: numele serviciului si al bazei de date (sa fie unice in cont).
+databases:
+  - name: checkin-db                 # <- schimba, ex. checkin-db-clientx
+    plan: free                       # free: expira la 30 de zile, fara backup.
+                                     # 0.1c-256mb ($6/luna): nu expira, are backup.
+    region: frankfurt
+    databaseName: checkin
+    ipAllowList: []                  # doar conexiuni interne (din serviciul de mai jos)
+
+services:
+  - type: web
+    name: webui-checkin              # <- schimba, ex. webui-clientx-oras (devine adresa .onrender.com)
+    runtime: python
+    plan: starter
+    region: frankfurt                # aceeasi regiune ca baza de date
+    branch: main
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 server.py
+    healthCheckPath: /healthz        # raspunde 200 doar daca baza de date e accesibila
+    maxShutdownDelaySeconds: 30      # instanta veche termina cererile in curs inainte de oprire
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: checkin-db           # <- acelasi nume ca la databases
+          property: connectionString
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # Optional - copiere automata in Google Sheet (vezi google-apps-script/sync.gs).
+      # URL-ul si token-ul sunt pentru scriptul din sheet-ul de check-in; sterge-le daca nu vrei sincronizare.
+      - key: GSHEET_WEBAPP_URL       # "Web app URL" din Apps Script -> Deploy (scriptul din sheet-ul de check-in)
+        value: https://script.google.com/macros/s/AKfycbwirMH9WWNkd9MRzlU4O9NVb5UjY3sMj-a7oDZ5sI1EMO0qZNYPB_qXJLA_Vu7Ock6BvA/exec
+      - key: GSHEET_TOKEN            # acelasi sir ca TOKEN din Script properties (repo privat)
+        value: jects/1fqKHB4QQ7LFfByZ3Wu0ypdqnZ-ETOlbqm7T_Q
+      - key: GSHEET_INTERVAL         # secunde intre sincronizari
+        value: "120"

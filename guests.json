@@ -1,0 +1,74 @@
+{
+ "guests": [
+  {
+   "id": "cc9b43541c",
+   "row": 2,
+   "name": "Andrei Popescu",
+   "detail": "",
+   "count": 2
+  },
+  {
+   "id": "fb8437eb6f",
+   "row": 3,
+   "name": "Maria Ionescu",
+   "detail": "Firma Exemplu - director",
+   "count": 1
+  },
+  {
+   "id": "de68bdb0b1",
+   "row": 4,
+   "name": "George Dumitru",
+   "detail": "",
+   "count": 2
+  },
+  {
+   "id": "4ccd857703",
+   "row": 5,
+   "name": "Elena Stan",
+   "detail": "",
+   "count": 1
+  },
+  {
+   "id": "c62036f9fc",
+   "row": 6,
+   "name": "Radu Marin",
+   "detail": "Hotel Exemplu",
+   "count": 4
+  },
+  {
+   "id": "9c52d9453e",
+   "row": 7,
+   "name": "Ioana Vasile",
+   "detail": "",
+   "count": 1
+  },
+  {
+   "id": "1e7fb2e297",
+   "row": 8,
+   "name": "Cristian Georgescu",
+   "detail": "",
+   "count": 2
+  },
+  {
+   "id": "486d82509c",
+   "row": 9,
+   "name": "Ana Pop",
+   "detail": "",
+   "count": 1
+  },
+  {
+   "id": "c9cea4d279",
+   "row": 10,
+   "name": "Ana Pop",
+   "detail": "Firma Exemplu 2",
+   "count": 1
+  },
+  {
+   "id": "a48ee8f894",
+   "row": 11,
+   "name": "Mihai Constantin",
+   "detail": "",
+   "count": 3
+  }
+ ]
+}
