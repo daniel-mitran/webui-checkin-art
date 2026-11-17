@@ -1,6 +1,7 @@
 /* =====================================================================
-   TEMA EVENIMENTULUI "Art" - neutra, deschisa: hartie calda, grafit, accent verde-salvie.
-   Contrast mare pentru tablete in lumina de zi.
+   TEMA EVENIMENTULUI - Lilly (dupa lilly.com/ro): rosu Lilly #D52B1E pe fundaluri
+   albe si neutre, text alb pe rosu. "A venit" ramane verde, ca sa nu se confunde
+   cu rosul de brand sau cu erorile.
    ===================================================================== */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
@@ -9,31 +10,33 @@
   --font:"Inter","Helvetica Neue",Arial,sans-serif;
 
   /* fundaluri */
-  --bg:#f4f2ee;          /* pagina: hartie calda */
-  --card:#ffffff;        /* randurile cu invitati */
-  --card-in:#e8f1ea;     /* randul unui invitat sosit */
-  --card-in-line:#b6d3bd;
-  --head:#24262a;        /* antetul: grafit */
+  --bg:#f5f5f3;          /* pagina: neutru deschis */
+  --card:#ffffff;
+  --card-in:#e8f3ec;     /* invitat sosit */
+  --card-in-line:#b3d6c0;
+  --head:#d52b1e;        /* antet: rosu Lilly */
   --head-ink:#ffffff;
-  --head-soft:rgba(255,255,255,.7);
-  --head-accent:#c9c2b6; /* data, subtitlul si linia de sub antet */
+  --head-soft:rgba(255,255,255,.85);
+  --head-accent:#ffffff;
 
   /* text */
-  --ink:#1d1f22;
-  --ink-soft:#5f6368;
-  --ink-faint:#a2a5aa;
-  --line:#e2ded6;
+  --ink:#1f1f1f;
+  --ink-soft:#5c5c5c;
+  --ink-faint:#a0a0a0;
+  --line:#e3e1dd;
 
-  /* culoarea principala (chenare, butoane, evidentieri) si textul pus peste ea */
-  --brand:#24262a;
-  --brand-soft:#ebe8e2;
-  --brand-line:rgba(255,255,255,.3);
+  /* culoarea principala (chenare, butoane, evidentieri) */
+  --brand:#d52b1e;
+  --brand-soft:#fbe9e7;
+  --brand-line:rgba(255,255,255,.45);
   --on-brand:#ffffff;
+  --mark-bg:#fbd9d5;     /* textul gasit la cautare */
+  --mark-ink:#1f1f1f;
 
-  /* accentul pentru "a venit" */
-  --accent:#2e7d4f;
-  --accent-glow:rgba(46,125,79,.22);
+  /* "a venit" */
+  --accent:#1e7a4a;
+  --accent-glow:rgba(30,122,74,.22);
 
-  --red:#c62f37;
+  --red:#a1150c;         /* erori: mai inchis decat rosul de brand */
   color-scheme:light;
 }

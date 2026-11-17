@@ -46,7 +46,8 @@ def col_index(ref):
 
 
 def xlsx_rows(path, sheet_name=None):
-    """-> lista de (numar_rand, {index_coloana: valoare})"""
+    """path: fisier sau obiect file-like (ex. io.BytesIO cu exportul din Google Sheets).
+    -> lista de (numar_rand, {index_coloana: valoare})"""
     z = zipfile.ZipFile(path)
     shared = []
     if "xl/sharedStrings.xml" in z.namelist():
@@ -133,6 +134,34 @@ def to_int(v):
         return 1
 
 
+def guest_id(name, detail, k):
+    """Id stabil, independent de pozitia randului: inserarea sau mutarea randurilor
+    in Excel / Google Sheet nu strica bifarile. k = a cata aparitie a aceluiasi
+    nume + detaliu (pentru dubluri identice)."""
+    key = "%s|%s|%d" % (clean(name).lower(), clean(detail).lower(), k)
+    return hashlib.sha1(key.encode("utf-8")).hexdigest()[:10]
+
+
+def parse_guests(rows, name="A", count="B", detail=None):
+    """rows: lista de (numar_rand, {coloana: valoare}) -> lista de invitati."""
+    ci_name = col_index(name)
+    ci_count = None if count in (None, "-", "", "none") else col_index(count)
+    ci_detail = col_index(detail) if detail else None
+    guests, seen = [], collections.Counter()
+    for rownum, vals in rows:
+        nm, det = split_name(vals.get(ci_name))
+        if not nm or nm.lower() in HEADER_WORDS:
+            continue
+        if ci_detail is not None:
+            extra = clean(vals.get(ci_detail))
+            det = " · ".join(x for x in (extra, det) if x)
+        cnt = to_int(vals.get(ci_count)) if ci_count is not None else 1
+        k = seen[(nm.lower(), det.lower())]
+        seen[(nm.lower(), det.lower())] += 1
+        guests.append({"id": guest_id(nm, det, k), "row": rownum, "name": nm, "detail": det, "count": cnt})
+    return guests
+
+
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser(description="Excel/CSV cu invitati -> guests.json")
@@ -145,21 +174,7 @@ def main():
     a = ap.parse_args()
 
     rows = csv_rows(a.file) if a.file.lower().endswith(".csv") else xlsx_rows(a.file, a.sheet)
-    ci_name = col_index(a.name)
-    ci_count = None if a.count in ("-", "", "none") else col_index(a.count)
-    ci_detail = col_index(a.detail) if a.detail else None
-
-    guests = []
-    for rownum, vals in rows:
-        name, detail = split_name(vals.get(ci_name))
-        if not name or name.lower() in HEADER_WORDS:
-            continue
-        if ci_detail is not None:
-            extra = clean(vals.get(ci_detail))
-            detail = " · ".join(x for x in (extra, detail) if x)
-        count = to_int(vals.get(ci_count)) if ci_count is not None else 1
-        gid = hashlib.sha1(("%d|%s" % (rownum, name)).encode("utf-8")).hexdigest()[:10]
-        guests.append({"id": gid, "row": rownum, "name": name, "detail": detail, "count": count})
+    guests = parse_guests(rows, a.name, a.count, a.detail)
 
     if not guests:
         raise SystemExit("Nu am gasit niciun invitat. Verifica --name / --sheet.")

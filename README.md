@@ -1,4 +1,4 @@
-# Check-in Art — presă și invitați (174 de persoane)
+# Check-in Lilly — presă și invitați
 
 Șablon pentru aplicațiile de check-in la evenimente (Meno, Metro, Single Malt…). Scrii 3 litere din nume și bifezi **A venit?**, iar bifarea apare pe toate tabletele în ~2 secunde. Bifările stau în **Render Postgres**, deci un deploy în timpul evenimentului **nu mai produce întrerupere**.
 
@@ -26,6 +26,20 @@
 5. **`render.yaml`:** schimbi numele serviciului (devine adresa `https://<nume>.onrender.com`) și numele bazei de date, în ambele locuri.
 6. **Render:** *New → Blueprint* și alegi repo-ul. Se creează baza de date Postgres și serviciul web. Orice push pe `main` face deploy automat, fără întrerupere.
 7. **Înainte de eveniment:** deschizi adresa pe toate tabletele, faci o bifare de test, apoi *Statistici → Șterge toate bifările*.
+
+## Lista de invitați din Google Sheet (opțional)
+
+Dacă `event.json` are `guestSheet`, lista nu mai e fixă: serverul recitește sheet-ul **la fiecare minut**, iar numele adăugate apar pe tablete automat, cu o notificare „Lista de invitați a fost actualizată”.
+
+```json
+"guestSheet": {"url": "https://docs.google.com/spreadsheets/d/…/edit", "name": "D", "detail": "C", "count": "-", "sheet": ""}
+```
+
+- `name`, `detail` și `count` sunt coloanele (ca la `import_excel.py`). `count: "-"` înseamnă că fiecare rând e o persoană, iar `sheet` gol înseamnă prima foaie. Celulele unite sunt citite corect.
+- **Partajare obligatorie:** în Google Sheet, *Share → General access → Anyone with the link → Viewer*. Altfel, în Statistici apare eroarea „sheet-ul trebuie partajat…”.
+- Inserarea sau mutarea rândurilor nu strică bifările. Dacă un nume e **corectat** după ce a fost bifat, persoana trebuie bifată din nou.
+- Dacă Google nu răspunde, aplicația folosește ultima listă bună, păstrată în baza de date. La prima pornire folosește `guests.json`.
+- Starea apare în Statistici, de exemplu „Lista de invitați: din Google Sheet, verificată la 19:42”.
 
 ## Copiere automată în Google Sheet (opțional)
 

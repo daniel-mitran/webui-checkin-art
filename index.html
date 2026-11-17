@@ -71,7 +71,7 @@
   .who{flex:1; min-width:0; display:flex; flex-direction:column; gap:7px;}
   .line1{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
   .name{font-size:23px; font-weight:600; line-height:1.25; overflow-wrap:anywhere;}
-  .name mark{background:var(--brand); color:var(--on-brand); border-radius:3px; padding:0 2px;}
+  .name mark{background:var(--mark-bg, var(--brand)); color:var(--mark-ink, var(--on-brand)); border-radius:3px; padding:0 2px;}
   .pax{flex:none; font-weight:600; font-size:14px; padding:4px 11px; border-radius:999px; border:1px solid var(--brand); color:var(--brand); white-space:nowrap;}
   .pax.big{background:var(--accent); border-color:var(--accent); color:var(--on-brand); font-size:16px;}
   .detail{font-size:15px; color:var(--ink-soft); line-height:1.4; overflow-wrap:anywhere;}
@@ -207,8 +207,9 @@
     </div>
     <div class="stat"><div class="k">Persoane sosite</div><div class="v" id="vP">–</div><div class="bar"><i id="bP"></i></div></div>
     <div class="stat inv"><div class="k">Invitații bifate</div><div class="v" id="vI">–</div><div class="bar"><i id="bI"></i></div></div>
-    <div class="meta">Tabletele se sincronizează la 2 secunde. Lista de invitați este fixă (din Excel).</div>
+    <div class="meta" id="syncInfo">Tabletele se sincronizează la 2 secunde. Lista de invitați este fixă (din Excel).</div>
     <div class="meta" id="queueInfo" hidden></div>
+    <div class="meta" id="guestInfo" hidden></div>
     <div class="meta" id="sheetInfo" hidden></div>
     <a class="btn export" href="/api/export.csv" download>Descarcă situația (Excel / CSV)</a>
     <div class="admin">
@@ -243,6 +244,7 @@
   var POLL_MS = 2000, MIN_CHARS = 3;
   var guests = [], byId = {}, checkins = {}, version = 0, loaded = false, lastOk = 0;
   var query = "", pending = {}, confirmId = null, showAll = false, filt = "all";
+  var gv = null, needFull = false;   // versiunea listei de invitati (se schimba cand se adauga nume in sheet)
   var allOne = false;   // toti invitatii au cate o persoana -> fara eticheta / coloana de persoane
 
   function $(id){ return document.getElementById(id); }
@@ -326,11 +328,28 @@
     else el.textContent = "Google Sheet: ultima încercare (" + hhmm(st.at) + ") a eșuat: " + (st.error || "eroare") + ". Se reîncearcă automat.";
   }
 
+  function guestInfo(st){
+    var el = $("guestInfo");
+    if (!st){ el.hidden = true; return; }
+    el.hidden = false;
+    $("syncInfo").textContent = "Tabletele se sincronizează la 2 secunde. Numele adăugate în Google Sheet apar automat în cel mult un minut.";
+    if (st.ok === false) el.textContent = "Lista de invitați: ultima citire din Google Sheet (" + hhmm(st.at) + ") a eșuat: " + (st.error || "eroare") + ". Se folosește ultima listă bună (" + guests.length + " invitați).";
+    else el.textContent = "Lista de invitați: din Google Sheet, verificată la " + (st.at ? hhmm(st.at) : "–") + " (la fiecare minut), " + guests.length + " invitați.";
+  }
+
   function apply(s){
     lastOk = Date.now();
     $("offline").hidden = true; $("dot").className = "dot";
     sheetInfo(s.sheetSync);
+    if (!s.guests && s.guestsVersion && gv !== null && s.guestsVersion !== gv) needFull = true;
     if (s.guests){
+      var before = guests.length, wasLoaded = loaded;
+      needFull = false;
+      if (wasLoaded && s.guestsVersion !== gv){
+        var d = s.guests.length - before;
+        toast("Lista de invitați a fost actualizată" + (d > 0 ? ": +" + d + (d === 1 ? " invitat" : " invitați") : d < 0 ? ": " + d + " invitați" : ""));
+      }
+      gv = s.guestsVersion || "";
       guests = s.guests.map(function(g){
         var name = properCase(g.name);
         return {id:g.id, row:g.row, name:name, detail:g.detail || "", count:g.count || 1,
@@ -352,6 +371,7 @@
       document.title = (ev.brand ? ev.brand + " · " : "") + "Check-in" + (ev.title ? " · " + ev.title : "");
       loaded = true;
     }
+    guestInfo(s.guestList);
     if (s.guests || s.version !== version || queue.length){
       version = s.version;
       checkins = overlay(s.checkins || {});
@@ -362,7 +382,7 @@
 
   function poll(){
     flush().catch(function(){})
-      .then(function(){ return req("GET", "/api/state" + (loaded ? "" : "?full=1")); })
+      .then(function(){ return req("GET", "/api/state" + (loaded && !needFull ? "" : "?full=1")); })
       .then(apply)
       .then(function(){ setTimeout(poll, POLL_MS); }, function(){
         if (Date.now() - lastOk > 6000){ $("offline").hidden = false; $("dot").className = "dot bad"; }
@@ -491,6 +511,7 @@
     if (b.hasAttribute("data-filt")){ filt = b.getAttribute("data-filt"); confirmId = null; render(); return; }
     var row = b.closest(".person"); if (!row) return;
     var id = row.getAttribute("data-id"), a = b.getAttribute("data-act"), g = byId[id], c = checkins[id];
+    if (!g) return;   // invitatul a disparut din lista intre timp
     if (a === "in") send(id, "/api/checkin", {id:id}, {ts:Date.now(), n:g.count}, "✓ " + g.name + (g.count > 1 ? " (" + pers(g.count) + ")" : "") + " a venit");
     else if (a === "undo") send(id, "/api/undo", {id:id}, null, "Debifat: " + g.name);
     else if (a === "ask"){ confirmId = id; render(); }

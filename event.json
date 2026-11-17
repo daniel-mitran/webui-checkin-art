@@ -1,11 +1,18 @@
 {
  "id": "art-2026",
- "brand": "Art",
+ "brand": "Lilly",
  "brandSub": "",
  "title": "Presă și invitați",
  "subtitle": "",
  "tag": "Check-in",
  "timezone": "Europe/Bucharest",
  "googleSheet": "https://docs.google.com/spreadsheets/d/1UEyhzAjPxUPSLoGvXVFAHPcU2XJ8ZC4WN1_c-h0Noh0/edit",
- "sheetName": "Art"
+ "sheetName": "Lilly",
+ "guestSheet": {
+  "url": "https://docs.google.com/spreadsheets/d/1N6737Z09cGSSKkKGmkKkGwjo7Zk5ILOo/edit",
+  "name": "D",
+  "detail": "C",
+  "count": "-",
+  "sheet": ""
+ }
 }

@@ -1,1218 +1,1218 @@
 {
  "guests": [
   {
-   "id": "01b197c201",
+   "id": "4be9f05ce1",
    "row": 3,
    "name": "Redacție",
    "detail": "Agerpres",
    "count": 1
   },
   {
-   "id": "d3179a3cd8",
+   "id": "eda5b161e4",
    "row": 4,
    "name": "George Banciulea",
    "detail": "Agerpres",
    "count": 1
   },
   {
-   "id": "34bfef576d",
+   "id": "a352935243",
    "row": 5,
    "name": "Redacție",
    "detail": "News.ro",
    "count": 1
   },
   {
-   "id": "e7529ae0d8",
+   "id": "3209795bd9",
    "row": 6,
    "name": "Adrian Artene",
    "detail": "Mediafax",
    "count": 1
   },
   {
-   "id": "6202acc995",
+   "id": "0ce491f0f9",
    "row": 7,
    "name": "Sorin Melenciuc",
    "detail": "360 medical",
    "count": 1
   },
   {
-   "id": "3f57c43990",
+   "id": "a5d72bbd85",
    "row": 8,
    "name": "Irina",
    "detail": "Revista Galenus",
    "count": 1
   },
   {
-   "id": "7fe337d4f6",
+   "id": "789f82197b",
    "row": 9,
    "name": "Alexandra Necșoiu",
    "detail": "CSID",
    "count": 1
   },
   {
-   "id": "98c9896172",
+   "id": "01988aa5b3",
    "row": 10,
    "name": "Andreea Vînătoru",
    "detail": "CSID",
    "count": 1
   },
   {
-   "id": "50b26b136d",
+   "id": "ea9b9d0bc7",
    "row": 11,
    "name": "Oana Cuzino",
    "detail": "DOC.ro",
    "count": 1
   },
   {
-   "id": "f2b96d22df",
+   "id": "69414e061a",
    "row": 12,
    "name": "Monika Baciu",
    "detail": "DC Medical",
    "count": 1
   },
   {
-   "id": "038f1cd111",
+   "id": "18e3fc1fb9",
    "row": 13,
    "name": "Redacție",
    "detail": "Sănătatea Press Group",
    "count": 1
   },
   {
-   "id": "462c020db9",
+   "id": "c0d4158be1",
    "row": 14,
    "name": "dr. Laura Davidescu",
    "detail": "Viața Medicală",
    "count": 1
   },
   {
-   "id": "9652f5fab5",
+   "id": "487934303c",
    "row": 15,
    "name": "Dorin Chioțea",
    "detail": "Libertatea",
    "count": 1
   },
   {
-   "id": "958cd81dc1",
+   "id": "ca9c523f01",
    "row": 16,
    "name": "Ioana Ion",
    "detail": "Libertatea",
    "count": 1
   },
   {
-   "id": "f2399ebd21",
+   "id": "8635095679",
    "row": 17,
    "name": "Alexandra Manaila",
    "detail": "Libertatea",
    "count": 1
   },
   {
-   "id": "e9b9130e8e",
+   "id": "066775fa8e",
    "row": 18,
    "name": "Andreea Groza",
    "detail": "ȘtirileProTV.ro",
    "count": 1
   },
   {
-   "id": "a2e0d79eb2",
+   "id": "bc4c4b4e23",
    "row": 19,
    "name": "Liliana Curea",
    "detail": "ȘtirileProTV.ro",
    "count": 1
   },
   {
-   "id": "e612489617",
+   "id": "6ab22460b3",
    "row": 20,
    "name": "Redacție",
    "detail": "Digi24.ro",
    "count": 1
   },
   {
-   "id": "6de54d6d4e",
+   "id": "c77144fa1a",
    "row": 21,
    "name": "Ana Cristina Micu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "ca3bc52afe",
+   "id": "76655d85b6",
    "row": 22,
    "name": "Adriana Duțulescu",
    "detail": "Antena3.ro",
    "count": 1
   },
   {
-   "id": "f04154e40d",
+   "id": "10167f3a8d",
    "row": 23,
    "name": "Adriana Duțulescu",
    "detail": "Observator News",
    "count": 1
   },
   {
-   "id": "b92db6ec05",
+   "id": "a53db98f8b",
    "row": 24,
    "name": "Nicoleta Nicolau",
    "detail": "Știri pe Surse",
    "count": 1
   },
   {
-   "id": "9b975b7f75",
+   "id": "b728b9e754",
    "row": 25,
    "name": "Florin Puscas",
    "detail": "",
    "count": 1
   },
   {
-   "id": "a38173627f",
+   "id": "07ab711025",
    "row": 26,
    "name": "Alexandra Curtache",
    "detail": "DC News",
    "count": 1
   },
   {
-   "id": "0f5abf3f2c",
+   "id": "2b10723c21",
    "row": 27,
    "name": "Val Vâcu",
    "detail": "DC News",
    "count": 1
   },
   {
-   "id": "011e989460",
+   "id": "ec85f4c92e",
    "row": 28,
    "name": "Tania Fântână",
    "detail": "G4Food",
    "count": 1
   },
   {
-   "id": "d593e0e0ce",
+   "id": "0a1645aee2",
    "row": 29,
    "name": "Ioana Câmpean",
    "detail": "G4Media",
    "count": 1
   },
   {
-   "id": "4063f44f6c",
+   "id": "d0ef694d17",
    "row": 30,
    "name": "Cristi Pantazi",
    "detail": "G4Media",
    "count": 1
   },
   {
-   "id": "3ecf2c492e",
+   "id": "b6f8cfa373",
    "row": 31,
    "name": "Adelina Toader",
    "detail": "România Liberă",
    "count": 1
   },
   {
-   "id": "133577dc44",
+   "id": "5f3fda6c5d",
    "row": 32,
    "name": "Redacție",
    "detail": "Ziare.com",
    "count": 1
   },
   {
-   "id": "06492bad5f",
+   "id": "b3b391d3fd",
    "row": 33,
    "name": "Andreea Ruxanda",
    "detail": "Ziare.com",
    "count": 1
   },
   {
-   "id": "ffa6d4517e",
+   "id": "7a31b4f3db",
    "row": 34,
    "name": "Redacție",
    "detail": "Aleph News",
    "count": 1
   },
   {
-   "id": "7d23fa21c8",
+   "id": "b77714e524",
    "row": 35,
    "name": "Mihaela Paun",
    "detail": "Aleph News",
    "count": 1
   },
   {
-   "id": "81a5221a96",
+   "id": "2da9825065",
    "row": 36,
    "name": "Bianca Bâlu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "9be980bc2e",
+   "id": "427939bffe",
    "row": 37,
    "name": "Bogdan Pitaru",
    "detail": "B1TV.ro",
    "count": 1
   },
   {
-   "id": "4ffe02df12",
+   "id": "7397c0ca67",
    "row": 38,
    "name": "Redacție",
    "detail": "ȘtirileKanalD.ro",
    "count": 1
   },
   {
-   "id": "0136d93bd6",
+   "id": "63d8f5925a",
    "row": 39,
    "name": "Georgiana Grimm",
    "detail": "ȘtirileKanalD.ro",
    "count": 1
   },
   {
-   "id": "432c53bc3f",
+   "id": "286a2e48b5",
    "row": 40,
    "name": "Redacție",
    "detail": "Euronews.ro",
    "count": 1
   },
   {
-   "id": "c2ac2488ab",
+   "id": "732b2ed1b2",
    "row": 41,
    "name": "Silviu Calangiu",
    "detail": "Euronews.ro",
    "count": 1
   },
   {
-   "id": "6f7828df73",
+   "id": "b52f916008",
    "row": 42,
    "name": "Redacție",
    "detail": "Prima News",
    "count": 1
   },
   {
-   "id": "00923a673c",
+   "id": "5acf89c409",
    "row": 43,
    "name": "Redacție",
    "detail": "Curierul Național",
    "count": 1
   },
   {
-   "id": "c137ce9d9b",
+   "id": "f6fe6d4cdc",
    "row": 44,
    "name": "Redacție",
    "detail": "B365",
    "count": 1
   },
   {
-   "id": "d1459b9e3a",
+   "id": "59ca6b8294",
    "row": 45,
    "name": "Redacție",
    "detail": "News București",
    "count": 1
   },
   {
-   "id": "a3b6e28be6",
+   "id": "352fe1c296",
    "row": 46,
    "name": "Ivona Stog",
    "detail": "News București",
    "count": 1
   },
   {
-   "id": "e153275826",
+   "id": "98c5bb37b9",
    "row": 47,
    "name": "Andra Miron",
    "detail": "Euronews",
    "count": 1
   },
   {
-   "id": "add1d48fa0",
+   "id": "f4a1d02748",
    "row": 48,
    "name": "Alexandru Avram",
    "detail": "Radio România",
    "count": 1
   },
   {
-   "id": "01f393e582",
+   "id": "b15e7f2944",
    "row": 49,
    "name": "Iulian Olescu",
    "detail": "Radio România",
    "count": 1
   },
   {
-   "id": "ff308502e6",
+   "id": "a9818f5a66",
    "row": 50,
    "name": "Adriana Turea",
    "detail": "",
    "count": 1
   },
   {
-   "id": "9a3af62dbf",
+   "id": "e9aed21341",
    "row": 51,
    "name": "Lucian Mîndruță",
    "detail": "DigiFM",
    "count": 1
   },
   {
-   "id": "40b757ce37",
+   "id": "babfb5afe5",
    "row": 52,
    "name": "Tiberiu Păun",
    "detail": "București FM",
    "count": 1
   },
   {
-   "id": "d0d4c92cee",
+   "id": "c58a78dddf",
    "row": 53,
    "name": "Dana Istrate",
    "detail": "Europa FM",
    "count": 1
   },
   {
-   "id": "245d46e7cb",
+   "id": "1842477ae8",
    "row": 54,
    "name": "Viorica Stefan",
    "detail": "",
    "count": 1
   },
   {
-   "id": "b251d850a0",
+   "id": "3273e08d30",
    "row": 55,
    "name": "Liana Stanciu",
    "detail": "Magic FM",
    "count": 1
   },
   {
-   "id": "4451ac1fca",
+   "id": "4722982f02",
    "row": 56,
    "name": "Adriana Stere",
    "detail": "Știrile ProTV",
    "count": 1
   },
   {
-   "id": "28074e4118",
+   "id": "88d36141cb",
    "row": 57,
    "name": "Liliana Curea",
    "detail": "Știrile ProTV",
    "count": 1
   },
   {
-   "id": "946a8a1920",
+   "id": "f6fbe016ed",
    "row": 58,
    "name": "Lucia Cujba",
    "detail": "Antena 1 - Observator",
    "count": 1
   },
   {
-   "id": "78afb2a8e7",
+   "id": "839d10f964",
    "row": 59,
    "name": "Maria Rohnean",
    "detail": "Antena 1 - Observator",
    "count": 1
   },
   {
-   "id": "2dd46d3b41",
+   "id": "9e4ef961f1",
    "row": 60,
    "name": "Andreea Cigolea",
    "detail": "Antena 3 CNN",
    "count": 1
   },
   {
-   "id": "6913ce5372",
+   "id": "4fdb3c9518",
    "row": 61,
    "name": "Paula Rusu",
    "detail": "Euronews",
    "count": 1
   },
   {
-   "id": "1e209a454a",
+   "id": "ead370adf8",
    "row": 62,
    "name": "Gimina Maxim",
    "detail": "Digi24",
    "count": 1
   },
   {
-   "id": "d9e092d7ca",
+   "id": "40c682047a",
    "row": 63,
    "name": "Diana Dumitrescu",
    "detail": "TVR 1",
    "count": 1
   },
   {
-   "id": "660c1fa2da",
+   "id": "a6d7bad3c4",
    "row": 64,
    "name": "Diana Brancus",
    "detail": "TVR 1",
    "count": 1
   },
   {
-   "id": "c3d7bb038d",
+   "id": "46aa044235",
    "row": 65,
    "name": "Redacție",
    "detail": "Știrile Kanal D",
    "count": 1
   },
   {
-   "id": "8d5c05b1b5",
+   "id": "adae9a3a45",
    "row": 66,
    "name": "Redacție",
    "detail": "Prima TV - Focus",
    "count": 1
   },
   {
-   "id": "39c520e1aa",
+   "id": "f3eff3dab3",
    "row": 67,
    "name": "Redacție",
    "detail": "B1 TV",
    "count": 1
   },
   {
-   "id": "6b0689cf21",
+   "id": "f729e3e703",
    "row": 68,
    "name": "Dana Ciriperu",
    "detail": "Ziarul Financiar",
    "count": 1
   },
   {
-   "id": "6782c02b48",
+   "id": "5f4148afe9",
    "row": 69,
    "name": "Georgiana Mihalache",
    "detail": "Ziarul Financiar",
    "count": 1
   },
   {
-   "id": "62bf3a93b7",
+   "id": "364efec570",
    "row": 70,
    "name": "Emilia Olescu",
    "detail": "Ziarul BURSA",
    "count": 1
   },
   {
-   "id": "612e4ac1e4",
+   "id": "b651b7becf",
    "row": 71,
    "name": "Alina Vasiescu",
    "detail": "Ziarul BURSA",
    "count": 1
   },
   {
-   "id": "f736d7b965",
+   "id": "fc286ac542",
    "row": 72,
    "name": "Petre Barbu",
    "detail": "Forbes România",
    "count": 1
   },
   {
-   "id": "2abb148cec",
+   "id": "83ebe68545",
    "row": 73,
    "name": "Andreea Brindau",
    "detail": "",
    "count": 1
   },
   {
-   "id": "b2f1add74b",
+   "id": "1f26144223",
    "row": 74,
    "name": "Elena Deacu",
    "detail": "Economedia",
    "count": 1
   },
   {
-   "id": "42d6809bce",
+   "id": "cb08a6f4a6",
    "row": 75,
    "name": "Oana Osman",
    "detail": "Profit.ro",
    "count": 1
   },
   {
-   "id": "20796e9fb4",
+   "id": "28f8292344",
    "row": 76,
    "name": "Gabriel Bârligă",
    "detail": "Revista BIZ",
    "count": 1
   },
   {
-   "id": "2b77ca9ff6",
+   "id": "1cdf153904",
    "row": 77,
    "name": "Ancuța Stanciu",
    "detail": "Financial Intelligence",
    "count": 1
   },
   {
-   "id": "712a880548",
+   "id": "5309c073e2",
    "row": 78,
    "name": "Anca Iovan",
    "detail": "Financial Intelligence",
    "count": 1
   },
   {
-   "id": "ffafe8c5e1",
+   "id": "35f6fd3d92",
    "row": 79,
    "name": "Florin Antonescu",
    "detail": "Economistul",
    "count": 1
   },
   {
-   "id": "00d0884e4d",
+   "id": "07a7cd1d0d",
    "row": 80,
    "name": "Clementina Anghelache",
    "detail": "Revista Psychologies",
    "count": 1
   },
   {
-   "id": "20000ecf68",
+   "id": "f9c3414027",
    "row": 81,
    "name": "Adriana Vlad",
    "detail": "Revista Psychologies",
    "count": 1
   },
   {
-   "id": "58bb79dce3",
+   "id": "2d77e38cf0",
    "row": 82,
    "name": "Bianca Sîrbu",
    "detail": "Pagina de Psihologie",
    "count": 1
   },
   {
-   "id": "6584c87b03",
+   "id": "a78f3d69b3",
    "row": 83,
    "name": "Gabriela Dumba",
    "detail": "Viva",
    "count": 1
   },
   {
-   "id": "8d3509dc25",
+   "id": "7f69e60341",
    "row": 84,
    "name": "Adina Zamfir",
    "detail": "Unica",
    "count": 1
   },
   {
-   "id": "1562431ab8",
+   "id": "daa9341b4d",
    "row": 85,
    "name": "Alina Aliman",
    "detail": "Alist Magazine",
    "count": 1
   },
   {
-   "id": "50430bc537",
+   "id": "0273c20964",
    "row": 86,
    "name": "Diana Cosmin",
    "detail": "Fine Society",
    "count": 1
   },
   {
-   "id": "4e937e49a2",
+   "id": "661404de6d",
    "row": 87,
    "name": "Carmen Olteanu",
    "detail": "Kudika.ro",
    "count": 1
   },
   {
-   "id": "bf2a2c3d86",
+   "id": "15dcc07f66",
    "row": 88,
    "name": "Anda Sebeși",
    "detail": "Business Review",
    "count": 1
   },
   {
-   "id": "39a10dbf19",
+   "id": "8a3cc512af",
    "row": 89,
    "name": "Aurel Drăgan",
    "detail": "Business Review",
    "count": 1
   },
   {
-   "id": "8928d9d421",
+   "id": "678eb0e316",
    "row": 90,
    "name": "Petre Barac",
    "detail": "The Diplomat-Bucharest",
    "count": 1
   },
   {
-   "id": "b2959b6155",
+   "id": "e70b1cbe39",
    "row": 91,
    "name": "Geta Roman Neacșu",
    "detail": "HotNews",
    "count": 1
   },
   {
-   "id": "37dd14b310",
+   "id": "cae5fd6fd8",
    "row": 92,
    "name": "Alex Livadaru",
    "detail": "Republica",
    "count": 1
   },
   {
-   "id": "d5590ca8a0",
+   "id": "91322ac49d",
    "row": 93,
    "name": "Claudiu Pândaru",
    "detail": "Republica",
    "count": 1
   },
   {
-   "id": "09aee8006e",
+   "id": "434db2b3cc",
    "row": 94,
    "name": "Tiberiu Totir",
    "detail": "Biziday",
    "count": 1
   },
   {
-   "id": "8256b3f57b",
+   "id": "163832df94",
    "row": 95,
    "name": "Orlano Nicoară",
    "detail": "EAD",
    "count": 1
   },
   {
-   "id": "8480dd5cc5",
+   "id": "c45c3dad81",
    "row": 96,
    "name": "Redacție",
    "detail": "Radio Romania Cultural",
    "count": 1
   },
   {
-   "id": "8544804510",
+   "id": "72ac70e9e6",
    "row": 97,
    "name": "Redacție",
    "detail": "Scena 9",
    "count": 1
   },
   {
-   "id": "e683f4b5c5",
+   "id": "3684ce9fb4",
    "row": 98,
    "name": "Evelyne Vilcu",
    "detail": "POV Bucharest City Guide",
    "count": 1
   },
   {
-   "id": "5973f294ae",
+   "id": "f875ff7d9b",
    "row": 99,
    "name": "Redacție",
    "detail": "B365",
    "count": 1
   },
   {
-   "id": "37db0b01c6",
+   "id": "9361f38b16",
    "row": 100,
    "name": "Redacție",
    "detail": "Sapte Seri",
    "count": 1
   },
   {
-   "id": "0b365db374",
+   "id": "d7a4f7f2ab",
    "row": 101,
    "name": "Redacție",
    "detail": "Zile si Nopti",
    "count": 1
   },
   {
-   "id": "450fc39f23",
+   "id": "c2a9a1cab8",
    "row": 102,
    "name": "Redacție",
    "detail": "Urban.ro",
    "count": 1
   },
   {
-   "id": "57781696d1",
+   "id": "6546601db8",
    "row": 103,
    "name": "Redacție",
    "detail": "Revista Cultura",
    "count": 1
   },
   {
-   "id": "238ca1311e",
+   "id": "ed70ba436a",
    "row": 104,
    "name": "Bogdan Dracea",
    "detail": "",
    "count": 1
   },
   {
-   "id": "2993f4db02",
+   "id": "a595a435a8",
    "row": 105,
    "name": "Andreea Oana Popescu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "068d801592",
+   "id": "5b2c94c779",
    "row": 106,
    "name": "Ilinca Paun",
    "detail": "",
    "count": 1
   },
   {
-   "id": "48a40a0172",
+   "id": "35b3611994",
    "row": 107,
    "name": "Bianca Apostol",
    "detail": "HCP influencer",
    "count": 1
   },
   {
-   "id": "07b9ae4c8d",
+   "id": "4648ccf39e",
    "row": 108,
    "name": "Ana Maria Anghel",
    "detail": "HCP influencer - coach nutritie",
    "count": 1
   },
   {
-   "id": "2dfb3002ca",
+   "id": "f740c57243",
    "row": 109,
    "name": "Elena Fedorcan",
    "detail": "HCP influencer - consilier nutritie",
    "count": 1
   },
   {
-   "id": "04e8c08e16",
+   "id": "0a8cf6bce5",
    "row": 110,
    "name": "Lorena Săroiu",
    "detail": "nutritionist",
    "count": 1
   },
   {
-   "id": "ef42a38b1b",
+   "id": "4b4fe9fc4b",
    "row": 111,
    "name": "Mihaela Vasile",
    "detail": "fitness intructor",
    "count": 1
   },
   {
-   "id": "d7d1491ea6",
+   "id": "ed330b37cd",
    "row": 112,
    "name": "Oana Zamfir",
    "detail": "",
    "count": 1
   },
   {
-   "id": "cd17b684c0",
+   "id": "e5bf2df6f4",
    "row": 113,
    "name": "Lili Sandu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "329f6df416",
+   "id": "13091cd9b2",
    "row": 114,
    "name": "Flavia Mihasan",
    "detail": "",
    "count": 1
   },
   {
-   "id": "b4a33ff45b",
+   "id": "ae2df08a87",
    "row": 115,
    "name": "Liza Sabau",
    "detail": "",
    "count": 1
   },
   {
-   "id": "5e0405d6f0",
+   "id": "6bcfc6d722",
    "row": 116,
    "name": "Cristina Almasan",
    "detail": "",
    "count": 1
   },
   {
-   "id": "6ba83f9232",
+   "id": "b81751504d",
    "row": 117,
    "name": "Lorena Visan",
    "detail": "",
    "count": 1
   },
   {
-   "id": "b99b93b8f4",
+   "id": "cf399cf4df",
    "row": 118,
    "name": "Madalin Serban",
    "detail": "",
    "count": 1
   },
   {
-   "id": "b72d1b4e51",
+   "id": "de98062e5e",
    "row": 119,
    "name": "Giulia Anghelescu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "4cb7354762",
+   "id": "f055b5335d",
    "row": 120,
    "name": "Ilona Brezoianu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "2ed75f207a",
+   "id": "37b7d94cef",
    "row": 121,
    "name": "Emma Stefan",
    "detail": "",
    "count": 1
   },
   {
-   "id": "3ff7d5d18f",
+   "id": "4185174e22",
    "row": 122,
    "name": "Ioana State",
    "detail": "",
    "count": 1
   },
   {
-   "id": "fad6103a83",
+   "id": "247187d0cb",
    "row": 123,
    "name": "Beatrice Olaru",
    "detail": "",
    "count": 1
   },
   {
-   "id": "8011a3ddca",
+   "id": "1c1206c583",
    "row": 124,
    "name": "Roxana Hulpe",
    "detail": "",
    "count": 1
   },
   {
-   "id": "382450ac35",
+   "id": "3858593e78",
    "row": 125,
    "name": "Monica Chiru",
    "detail": "",
    "count": 1
   },
   {
-   "id": "c9c8cb22fe",
+   "id": "6c4c22a364",
    "row": 126,
    "name": "Bogdan Teches",
    "detail": "",
    "count": 1
   },
   {
-   "id": "81d29b7afb",
+   "id": "3f65a60e8f",
    "row": 127,
    "name": "Gabriel Feresteanu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "7c9d7a41c3",
+   "id": "dd0bd8ad8e",
    "row": 128,
    "name": "Simona Mereu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "af37219acc",
+   "id": "bf3773c7d8",
    "row": 129,
    "name": "Călător în Bascheți",
    "detail": "",
    "count": 1
   },
   {
-   "id": "d431b0f47f",
+   "id": "d1af9d997a",
    "row": 130,
    "name": "Daniela Macsim",
    "detail": "",
    "count": 1
   },
   {
-   "id": "fb9e091178",
+   "id": "23dfec1394",
    "row": 131,
    "name": "Prajiturela",
    "detail": "Mihaela Sava",
    "count": 1
   },
   {
-   "id": "19fa6964a3",
+   "id": "f18b5a9dda",
    "row": 132,
    "name": "Ioana Dumitrache",
    "detail": "",
    "count": 1
   },
   {
-   "id": "9e8d811a0d",
+   "id": "f20e971b89",
    "row": 133,
    "name": "Pufeh",
    "detail": "",
    "count": 1
   },
   {
-   "id": "6b3e61decb",
+   "id": "edae34c08a",
    "row": 134,
    "name": "Horia Sarghi - videograf",
    "detail": "Zaiafet",
    "count": 1
   },
   {
-   "id": "37439226a0",
+   "id": "d0da540710",
    "row": 135,
    "name": "Ovidiu Parfeni",
    "detail": "",
    "count": 1
   },
   {
-   "id": "9d7653bb5e",
+   "id": "4d8d906bd6",
    "row": 136,
    "name": "Daciana Ispir",
    "detail": "",
    "count": 1
   },
   {
-   "id": "4f1f1bf8da",
+   "id": "0e057521d2",
    "row": 137,
    "name": "Ioana Dragan",
    "detail": "",
    "count": 1
   },
   {
-   "id": "9c0da4e647",
+   "id": "cd89b5fbd7",
    "row": 138,
    "name": "Laura Gavilas",
    "detail": "",
    "count": 1
   },
   {
-   "id": "665d96b015",
+   "id": "4f64122d58",
    "row": 139,
    "name": "David Marica",
    "detail": "",
    "count": 1
   },
   {
-   "id": "a7d4edc7b8",
+   "id": "084226a92d",
    "row": 140,
    "name": "Elena Tambrea",
    "detail": "",
    "count": 1
   },
   {
-   "id": "27c9d821ee",
+   "id": "787451b3ad",
    "row": 141,
    "name": "Sevgean Ali",
    "detail": "",
    "count": 1
   },
   {
-   "id": "e7dc27072b",
+   "id": "0cc1e57ef4",
    "row": 142,
    "name": "Aniela Popescu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "671d760dd2",
+   "id": "3972ec1126",
    "row": 143,
    "name": "Ana-Maria Hrisca",
    "detail": "",
    "count": 1
   },
   {
-   "id": "f74898dec7",
+   "id": "854b6f86c8",
    "row": 144,
    "name": "Radu Pretorian",
    "detail": "",
    "count": 1
   },
   {
-   "id": "79eb57a852",
+   "id": "ec541ed45a",
    "row": 145,
    "name": "Oana Cuzino",
    "detail": "",
    "count": 1
   },
   {
-   "id": "aadd0d279b",
+   "id": "b98297e9c1",
    "row": 146,
    "name": "Liviu Adrian",
    "detail": "",
    "count": 1
   },
   {
-   "id": "24225bca82",
+   "id": "6d70bc55eb",
    "row": 147,
    "name": "Alexandra Balasa",
    "detail": "",
    "count": 1
   },
   {
-   "id": "aee718eb2a",
+   "id": "6c7d275559",
    "row": 148,
    "name": "Roxana Radu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "08817e4049",
+   "id": "ff9ce351c3",
    "row": 149,
    "name": "Dr. Oana Bogdana Greblă",
    "detail": "",
    "count": 1
   },
   {
-   "id": "5e6f3fafc5",
+   "id": "82af1c14cf",
    "row": 150,
    "name": "Dr. Razvan Vintilescu",
    "detail": "",
    "count": 1
   },
   {
-   "id": "ae9f8b0ae2",
+   "id": "d1126cd74c",
    "row": 151,
    "name": "Fady Chereih",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "f6ce233479",
+   "id": "4e4376f427",
    "row": 152,
    "name": "Olimpia Enache",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "836038662f",
+   "id": "85b91fd479",
    "row": 153,
    "name": "Madalina Caraiani",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "63aa2d4238",
+   "id": "1528d99aaa",
    "row": 154,
    "name": "Madalina Radu",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "4f741b9b02",
+   "id": "29ac3dba63",
    "row": 155,
    "name": "Andreea Minuta",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "0c06ca9e24",
+   "id": "392162598f",
    "row": 156,
    "name": "Greta Redeleanu",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "a5265e360d",
+   "id": "5e9e715fc0",
    "row": 157,
    "name": "Roxana Popescu",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "3b74ea910b",
+   "id": "1af587ab6b",
    "row": 158,
    "name": "Bianca Loboda",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "4910a997b5",
+   "id": "ab6a4faa50",
    "row": 159,
    "name": "Dan Dimitriu",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "378b827852",
+   "id": "34a8d25ceb",
    "row": 160,
    "name": "Cristiana Vago",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "4ab1297805",
+   "id": "4a7b5c837b",
    "row": 161,
    "name": "Aura Stroe",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "19ff6ea244",
+   "id": "e6e0f156dd",
    "row": 162,
    "name": "Cristina Crintea",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "753a9becbd",
+   "id": "eacc8aff7a",
    "row": 163,
    "name": "Oana Vladislav",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "138f980802",
+   "id": "63c5e24536",
    "row": 164,
    "name": "Serban Semeniuc",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "76fd84c3c8",
+   "id": "fd1e8f2106",
    "row": 165,
    "name": "Gabriela Beloiu",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "dc47ca57bd",
+   "id": "5ac8c7a348",
    "row": 166,
    "name": "Raluca Miloaga",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "ca1ca1b2f2",
+   "id": "dbab0c609c",
    "row": 167,
    "name": "Adriana Ispas",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "345f029d7c",
+   "id": "23c07796bf",
    "row": 168,
    "name": "Cristina Duna",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "38fb891e20",
+   "id": "c8cf09f128",
    "row": 169,
    "name": "Claudia Munteanu",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "da7b7be033",
+   "id": "66ee39afbc",
    "row": 170,
    "name": "Dana Damascan",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "4c75b1564a",
+   "id": "356df7bd75",
    "row": 171,
    "name": "Irina Arendt",
    "detail": "Regina Maria",
    "count": 1
   },
   {
-   "id": "7bec9f6b56",
+   "id": "1df86350c3",
    "row": 172,
    "name": "Argentina Manolache",
    "detail": "Dr. Max",
    "count": 1
   },
   {
-   "id": "3ff5babbbc",
+   "id": "16caebaca5",
    "row": 173,
    "name": "Camelia Naciadi",
    "detail": "Dr. Max",
    "count": 1
   },
   {
-   "id": "7787e31371",
+   "id": "d6b4767082",
    "row": 174,
    "name": "Cezar Zaharia",
    "detail": "Dr. Max",
    "count": 1
   },
   {
-   "id": "6ccbbd9536",
+   "id": "48cd1f5d4e",
    "row": 175,
    "name": "Tiberiu",
    "detail": "DocBook",
    "count": 1
   },
   {
-   "id": "5989427186",
+   "id": "7a9285a5ac",
    "row": 176,
    "name": "Nicolae Fotin",
    "detail": "MediaKompass",
